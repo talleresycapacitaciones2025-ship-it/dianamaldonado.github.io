@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diana Maldonado | Consultora en Ciberseguridad Educativa</title>
+    <style>
+        :root {
+            --primary-blue: #2A52BE;
+            --primary-purple: #8A2BE2;
+            --light-gray: #f5f7fa;
+            --dark-gray: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            height: 80px; /* Logo más grande */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: var(--white);
+            padding: 160px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('taller-computadoras.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Secciones generales */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--primary-blue);
+        }
+
+        /* Sobre Mí */
+        .about {
+            background-color: var(--light-gray);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-purple);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .service-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        /* Testimonios */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: var(--white);
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('dibujos-emociones.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .testimonials-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Cambio de color en la palabra "Impacto" */
+        .testimonials .section-title {
+            color: #FFD700; /* Dorado brillante */
+        }
+
+        /* Reconocimientos */
+        .recognitions {
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .recognitions-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .recognition-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+        }
+
+        .recognition-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .credly-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .credly-link:hover {
+            background-color: #1e409c;
+        }
+
+        /* Contacto */
+        .contact-form-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .form-content {
+            flex: 1;
+        }
+
+        .form-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        .contact-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        form {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-purple);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #7a1bd2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+            justify-content: center;
+            gap: 15px; /* Espacio entre botones */
+        }
+
+        .social-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px; /* Pequeño margen extra */
+            transition: background-color 0.3s;
+            color: white; /* Texto blanco para todos los botones sociales */
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1da851;
+        }
+
+        .linkedin-btn {
+            background-color: #0077B5; /* Color oficial de LinkedIn */
+        }
+
+        .linkedin-btn:hover {
+            background-color: #005885;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); /* Gradiente de Instagram */
+        }
+
+        .instagram-btn:hover {
+            opacity: 0.9;
+        }
+
+        .portfolio-btn {
+            background-color: var(--primary-purple); /* Color consistente con el diseño */
+        }
+
+        .portfolio-btn:hover {
+            background-color: #7a1bd2;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content,
+            .contact-form-container {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .footer-content {
+                flex-direction: column; /* Apila los botones en móvil */
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <img src="Logo Ciberseguridad.png" alt="Logo Diana Maldonado" class="logo">
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Diana Maldonado</h1>
+            <h2>Tecnóloga Pedagógica en Informática | Consultora en Ciberseguridad Educativa & Derechos Humanos Digitales</h2>
+            <p>Capacitando a instituciones públicas y privadas para construir entornos digitales seguros, éticos e inclusivos desde hace más de 12 años.</p>
+            <a href="#contact" class="btn btn-primary">Solicitar una charla o taller</a>
+            <a href="https://wa.me/5930984708090" target="_blank" class="btn btn-secondary">Contactar por WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Sobre Mí -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Mi Propósito</h3>
+                    <p>Mi misión es empoderar a docentes, estudiantes, instituciones y organizaciones con herramientas prácticas y éticas para navegar el mundo digital con seguridad, consciencia y equidad.</p>
+                    <p>Soy Tecnóloga Pedagógica en Informática con más de 12 años de experiencia en derechos humanos digitales. Auditora Líder ISO 27001:2022, Técnica en Ciberseguridad y especialista en inteligencia artificial aplicada a la educación. He diseñado e implementado programas de capacitación en ciberseguridad educativa, violencia de género digital, huella digital, masculinidades y género, así como talleres de marketing digital y uso de IA para docentes y equipos educativos.</p>
+                </div>
+                <div class="about-image">
+                    <img src="taller-computadoras.jpg" alt="Diana Maldonado en un taller con computadoras">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Servicios que Ofrezco</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="dibujos-emociones.jpg" alt="Ciberseguridad Educativa">
+                    </div>
+                    <div class="service-content">
+                        <h3>🛡️ Ciberseguridad Educativa</h3>
+                        <p>Charlas y capacitaciones para instituciones educativas sobre el buen uso del internet con responsabilidad y empatía. Talleres para docentes, personal, <strong>niños y adolescentes</strong> sobre evaluación de riesgos digitales en entornos escolares y diseño de políticas de uso seguro de tecnología.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="charla-huella-digital.jpg" alt="Violencia Digital y Género">
+                    </div>
+                    <div class="service-content">
+                        <h3>🌐 Violencia Digital y Género</h3>
+                        <p>Charlas para instituciones educativas sobre violencia de género en entornos digitales. Talleres de prevención y respuesta institucional. Formación en masculinidades y género en la era digital. Charlas para madres, padres, cuidadores, <strong>niños y adolescentes</strong> sobre cómo prevenir y detectar situaciones de riesgo en línea.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="sala-computadoras-2.jpg" alt="IA Aplicada a la Docencia">
+                    </div>
+                    <div class="service-content">
+                        <h3>🤖 IA Aplicada a la Docencia con Automatizaciones</h3>
+                        <p>Herramientas de inteligencia artificial y automatización para ayudar a docentes y profesores en el envío, seguimiento y retroalimentación de tareas, liberando tiempo para lo más importante: la enseñanza.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="joven-computadora.jpg" alt="Marketing Digital para Emprendedores">
+                    </div>
+                    <div class="service-content">
+                        <h3>📈 Marketing Digital para Personas Emprendedoras</h3>
+                        <p>Estrategias digitales para emprendedores. Gestión de redes sociales y presencia online. Herramientas gratuitas y efectivas para comunicación institucional.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="taller-computadoras.jpg" alt="IA Aplicada a la Educación">
+                    </div>
+                    <div class="service-content">
+                        <h3>💡 Inteligencia Artificial Aplicada a la Educación</h3>
+                        <p>Uso ético y pedagógico de herramientas de IA. Talleres prácticos para docentes. Integración de IA en planes de clase y evaluación.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="charla-familia.jpg" alt="Consultoría">
+                    </div>
+                    <div class="service-content">
+                        <h3>🏛️ Consultoría y Asesoría</h3>
+                        <p>Para sectores público y privado. Proyectos remotos nacionales e internacionales. Certificación ISO 27001:2022 (Auditoría y acompañamiento).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials" id="testimonials">
+        <div class="container testimonials-content">
+            <h2 class="section-title">Impacto</h2>
+            <div class="testimonial">
+                <p>“Las actividades de Diana ayudaron a mis hijos a entender sus emociones en línea y a tomar decisiones más conscientes.”</p>
+                <p><em>— Madre participante en taller de ciberseguridad familiar</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reconocimientos -->
+    <section class="recognitions" id="recognitions">
+        <div class="container">
+            <h2 class="section-title">Reconocimientos</h2>
+            <div class="recognitions-content">
+                <div class="recognition-card">
+                    <img src="reconocimiento-festival.jpg" alt="Reconocimiento Festival de Ciberseguridad para América Latina">
+                    <h3>Reconocimiento - Festival de Ciberseguridad para América Latina</h3>
+                    <p>Por mi extraordinaria participación como conferencista en la segunda edición del Festival de Ciberseguridad para América Latina en septiembre de 2023.</p>
+                </div>
+                <a href="https://www.credly.com/users/diana-maldonado.e5a4118b" target="_blank" class="credly-link">Ver mis insignias en Credly</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">¿Te interesa una charla, taller o consultoría?</h2>
+            <div class="contact-form-container">
+                <div class="form-content">
+                    <h3>Completa este formulario y te responderé en menos de 24 horas.</h3>
+                    <form action="https://formspree.io/f/talleresycapacitaciones2025@gmail.com" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono (opcional)</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Tipo de servicio que busca</label>
+                            <select id="service" name="service" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Charla">Charla</option>
+                                <option value="Taller">Taller</option>
+                                <option value="Consultoría">Consultoría</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" placeholder="Cuéntame qué necesitas" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" name="whatsapp_preference"> Prefiero contacto por WhatsApp
+                            </label>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar solicitud</button>
+                    </form>
+                </div>
+                <div class="contact-image">
+                    <img src="sala-computadoras-2.jpg" alt="Diana Maldonado en un taller interactivo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <a href="https://wa.me/5930984708090" target="_blank" class="social-btn whatsapp-btn">📱 WhatsApp</a>
+            <a href="https://www.linkedin.com/in/diana-maldonado-lasso" target="_blank" class="social-btn linkedin-btn">💼 LinkedIn</a>
+            <a href="https://www.instagram.com/dianaimaldonado/" target="_blank" class="social-btn instagram-btn">📷 Instagram</a>
+            <a href="Portafolio Productos Diana Maldonado.pdf" target="_blank" class="social-btn portfolio-btn">📋 Portafolio de Productos y Servicios</a>
+        </div>
+        <div class="container">
+            <p class="copyright">© 2025 Diana Maldonado. Todos los derechos reservados. | Email protegido para seguridad.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+     
+
